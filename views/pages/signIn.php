@@ -31,10 +31,14 @@
     $status = FormController::signIn();
     if( $status == "successful"){
         echo '<div class="alert alert-success col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3">Usuario creado con éxito</div>';
-        echo '<script>
-            if( window.history.replaceState ){
-                window.history.replaceState( null, null, window.location.href );
-            }
-            </script>';
+    }else if( $status == "passMatch" ){
+        echo '<div class="alert alert-warning col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3">Contraseñas no coinciden</div>';
+    }else if( $status == "errorDB" ){
+        echo '<div class="alert alert-danger col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3">Error al crear usuario</div>';
     }
+    echo '<script>
+    if( window.history.replaceState ){
+        window.history.replaceState( null, null, window.location.href );
+    }
+    </script>';
 ?>
