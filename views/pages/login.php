@@ -14,3 +14,6 @@
         </div>
     </form>
 </div>
+<div class="container text-center">
+    <a href="?page=signIn" class="fs-6"><small>Aún no tengo una cuenta</small></a>
+</div>

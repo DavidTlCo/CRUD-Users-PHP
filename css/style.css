@@ -4,7 +4,6 @@ body{
 .fa-users{
     color: rgb(41, 123, 216);
 }
-
 /* Animations */
 .notify{
     animation: slideOut 0.7s ease-in-out 3s both;

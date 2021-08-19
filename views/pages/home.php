@@ -1,31 +1,33 @@
+<?php
+    $users = FormController::readUsers();
+    // echo "<pre>"; print_r($users); echo "</pre>";
+?>
+
 <table class="table table-hover caption-top">
     <caption>List of users</caption>
     <thead>
         <tr>
-            <th scope="col">#</th>
-            <th scope="col">First</th>
-            <th scope="col">Last</th>
-            <th scope="col">Handle</th>
+            <th scope="col">ID</th>
+            <th scope="col">Nombre de usuario</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Fecha de creación</th>
+            <th scope="col">Acciones</th>
         </tr>
     </thead>
     <tbody>
+        <?php foreach ($users as $key => $user){ ?>
         <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <td><?php echo ($key+1) ?></td>
+            <td><?php echo $user["usuario"]; ?></td>
+            <td><?php echo $user["correo"]; ?></td>
+            <td><?php echo $user["creado"]; ?></td>
+            <td>
+                <div class="btn-group">
+                    <button class="btn btn-primary me-1 rounded"><i class="fas fa-pencil-alt"></i></button>
+                    <button class="btn btn-danger rounded "><i class="fas fa-trash-alt"></i></button>
+                </div>
+            </td>
         </tr>
-        <tr>
-            <th scope="row">2</th>
-            <td>Jacob</td>
-            <td>Thornton</td>
-            <td>@fat</td>
-        </tr>
-        <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-        </tr>
+        <?php } ?>
     </tbody>
 </table>

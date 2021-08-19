@@ -17,5 +17,11 @@
                     return "passMatch";
             }
         }
+
+        static public function readUsers(){
+            $table = "usuarios";
+            $response = FormModel::readUsers($table);
+            return $response;
+        }
     }
 ?>
