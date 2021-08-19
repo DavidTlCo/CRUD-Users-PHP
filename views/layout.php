@@ -1,3 +1,7 @@
+<?php 
+    // Declare vars session
+    session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 
