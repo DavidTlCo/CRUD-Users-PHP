@@ -1,4 +1,13 @@
 <?php
+    if( !isset($_SESSION["logued"]) ){
+        echo '<script> window.location = "?page=login"; </script>';
+        return;
+    }else{
+        if ( $_SESSION["logued"] != "ok" ) {
+            echo '<script> window.location = "?page=login"; </script>';
+            return;
+        }
+    }
     $users = FormController::readUsers();
     // echo "<pre>"; print_r($users); echo "</pre>";
 ?>
