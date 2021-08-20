@@ -92,6 +92,7 @@
                 || $_GET["page"] == "signIn"
                 || $_GET["page"] == "login"
                 || $_GET["page"] == "signout"
+                || $_GET["page"] == "edit"
             ) {
                 include "views/pages/" . $_GET["page"] . ".php";
             }else{

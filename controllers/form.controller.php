@@ -18,9 +18,9 @@
             }
         }
 
-        static public function readUsers(){
+        static public function readUser($field, $value){
             $table = "usuarios";
-            $response = FormModel::readUsers($table);
+            $response = FormModel::readUser($table, $field, $value);
             return $response;
         }
 
@@ -35,7 +35,7 @@
                     $field = "usuario";
                 $table = "usuarios";
                 // Invoque query from model
-                $response = FormModel::login($table, $field, $value);
+                $response = FormModel::readUser($table, $field, $value);
                 // If query returns data not empty, else: user not exist
                 if( $response )
                     // If response is not empty, compare pass from input and data from DB
@@ -52,6 +52,38 @@
                 }
                 </script>';
                 // echo "<pre>"; print_r($response); echo "</pre>";
+            }
+        }
+        
+        public function updateUser($id){
+            if( isset($_POST["username"]) ){
+                if( $_POST["password"] == "" ){
+                    $newPassword = $_POST["currentPassword"];
+                }else{
+                    $newPassword = $_POST["password"];
+                }
+                $currentPassword = $_POST["currentPassword"];
+                $table = "usuarios";
+                $data = array(
+                    "id" => $id,
+                    "username" => $_POST["username"],
+                    "email" => $_POST["email"],
+                    "password" => $newPassword);
+                $response = FormModel::updateUser($table, $data, $currentPassword);
+                if($response == "successful"){
+                    echo '<div class="alert alert-success col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3 text-center">Datos de usuario actualizados con éxito</div>';
+                }
+                if( $response == "errorPassword"){
+                    echo '<div class="alert alert-danger col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3 text-center">Contraseña actual incorrecta. Comprueba tu identidad</div>';
+                }
+                echo '<script>
+                if( window.history.replaceState ){
+                    window.history.replaceState( null, null, window.location.href );
+                }
+                setTimeout(function() {
+                    window.location = "?page=home";
+                }, 4000);
+                </script>';
             }
         }
     }

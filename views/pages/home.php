@@ -8,7 +8,7 @@
             return;
         }
     }
-    $users = FormController::readUsers();
+    $users = FormController::readUser(null, null);
     // echo "<pre>"; print_r($users); echo "</pre>";
 ?>
 
@@ -32,8 +32,14 @@
             <td><?php echo $user["creado"]; ?></td>
             <td>
                 <div class="btn-group">
-                    <button class="btn btn-primary me-1 rounded"><i class="fas fa-pencil-alt"></i></button>
-                    <button class="btn btn-danger rounded "><i class="fas fa-trash-alt"></i></button>
+                    <div>
+                        <a href="?page=edit&id=<?php echo $user["id"]; ?>" class="btn btn-primary me-1 rounded"><i class="fas fa-pencil-alt"></i></a>
+                    </div>
+                    <div>
+                        <form action="" method="post">
+                            <input type="hidden" name="id" value="<?php echo $user["id"]; ?>"">
+                            <a href="" class="btn btn-danger rounded "><i class="fas fa-trash-alt"></i></a>
+                        </form>
                 </div>
             </td>
         </tr>
