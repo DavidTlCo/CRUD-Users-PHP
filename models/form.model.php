@@ -49,13 +49,26 @@
                 if( $query->execute() ){
                     return "successful";
                 }else{
-                    print_r( Connection::connect()->errorInfo() );
+                    // print_r( Connection::connect()->errorInfo() );
                     return "error";
                 }
             }else{
                 return "errorPassword";
             }
             $query = null;
+        }
+
+        static public function deleteUser($table, $field, $value){
+            echo "llega";
+            $query = Connection::connect()->prepare("DELETE FROM $table WHERE $field=:id");
+            // linked a PHP var with a param with name matched with SQL query to prepare the sentence
+            $query->bindParam(":id", $value, PDO::PARAM_STR);
+            if( $query->execute() ){
+                return "successful";
+            }else{
+                // print_r( Connection::connect()->errorInfo() );
+                return "error";
+            }
         }
     }
 ?>

@@ -37,8 +37,12 @@
                     </div>
                     <div>
                         <form action="" method="post">
-                            <input type="hidden" name="id" value="<?php echo $user["id"]; ?>"">
-                            <a href="" class="btn btn-danger rounded "><i class="fas fa-trash-alt"></i></a>
+                            <input type="hidden" value="<?php echo $user['id']; ?>" name="id">
+                            <button type="submit" class="btn btn-danger rounded "><i class="fas fa-trash-alt"></i></button>
+                            <?php
+                                $controller = new FormController();
+                                $controller->deleteUser();
+                            ?>
                         </form>
                 </div>
             </td>

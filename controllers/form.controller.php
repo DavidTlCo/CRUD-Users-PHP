@@ -86,5 +86,20 @@
                 </script>';
             }
         }
+
+        public function deleteUser(){
+            if( isset($_POST["id"]) ){
+                echo "llega";
+                $table = "usuarios";
+                $field = "id";
+                $response = FormModel::deleteUser($table, $field, $_POST["id"]);
+                if( $response == "successful" ){
+                    echo '<div class="alert alert-success col-xl-3 col-sm-6 mx-auto d-flex justify-content-center notify py-3 text-center">Usuario elimnado xon éxito</div>';
+                }
+                echo '<script>
+                    window.location = "?page=home";
+                </script>';
+            }
+        }
     }
 ?>
